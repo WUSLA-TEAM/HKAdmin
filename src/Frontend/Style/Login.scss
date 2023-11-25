@@ -1,0 +1,129 @@
+#Login-Page {
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  background-color: #242424;
+  color: #fff;
+  height: 100vh;
+  .wrapperMain {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2% 25px;
+
+    #right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+
+      h3 {
+        font-family: "OpenSans";
+        font-size: 30px;
+        font-weight: 900;
+        margin: 0;
+        text-align: center;
+      }
+
+      p {
+        font-family: "OpenSans";
+        font-size: 12px;
+        font-weight: 200;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      #button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .button {
+          padding: 20px 30px;
+          font-family: "OpenSans";
+          font-weight: 700;
+          font-size: 15px;
+          margin-left: 10px;
+          margin-bottom: 30px;
+        }
+
+        .google {
+          margin-left: 0px;
+        }
+      }
+
+      .form {
+        width: 440px;
+        text-align: start;
+        display: flex;
+        flex-direction: column;
+
+        h4 {
+          font-family: "OpenSans";
+          font-weight: bold;
+          font-size: 20px;
+          display: inline-block;
+          margin-top: 10px;
+        }
+
+        input {
+          font-family: "OpenSans";
+          font-weight: bold;
+          font-size: 12px;
+          display: inline-block;
+          padding: 20px 18px;
+          border-radius: 73px;
+          border: none;
+          margin-bottom: 10px;
+
+          &:hover {
+            font-family: "OpenSans";
+            font-weight: bold;
+            font-size: 15px;
+            padding: 20px 18px;
+            border-radius: 10px;
+            border: 1px solid;
+            border-color: #3f48fa;
+          }
+        }
+
+        button {
+          font-family: "OpenSans";
+          font-weight: bold;
+          font-size: 15px;
+          padding: 10px 18px;
+          border-radius: 8px;
+          width: 150px;
+          text-align: center;
+          margin: 20px auto;
+
+          &:hover {
+            font-size: 20px;
+            padding: 12px 20px;
+            border-radius: 10px;
+            width: 200px;
+            text-align: center;
+            margin: 25px auto;
+            position: relative;
+            right: 10px;
+            top: 10px;
+          }
+        }
+      }
+    }
+    #left {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+
+      .box {
+        img {
+          width: 100%;
+          display: block;
+        }
+      }
+    }
+  }
+}

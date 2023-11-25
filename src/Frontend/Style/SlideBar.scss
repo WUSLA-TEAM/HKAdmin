@@ -1,0 +1,88 @@
+#SlideBar-page {
+  background-color: #242424;
+  height: 100vh;
+  color: #fff;
+  width: 80px; /* Set an initial width */
+  overflow-x: hidden;
+  transition: width 0.4s; /* Add a transition effect on width */
+
+  .wrapper {
+    padding: 18px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+      margin: 10px;
+      font-family: "OpenSans";
+      font-size: 15px;
+      font-weight: 200;
+      transition: all 0.4s;
+
+      span {
+        transition: all 0.5s;
+      }
+
+      &:hover {
+        span {
+          font-size: 40px;
+          color: orange;
+        }
+      }
+    }
+
+    ul {
+      list-style-type: none;
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      flex-direction: column;
+      padding: 0;
+
+      li {
+        margin: 10px;
+        transition: margin 0.5s;
+
+        button {
+          border-radius: 75px;
+          width: 100%;
+          font-size: 10px;
+          transition: all 0.3s;
+
+          &:hover {
+            background-color: #303030;
+            padding: 11px 35px;
+            border-radius: 10px;
+          }
+        }
+      }
+    }
+
+    .login {
+      margin-top: 100px;
+    }
+  }
+
+  &:hover {
+    width: 10%;
+
+    h1 {
+      text-align: center;
+      margin: 20px;
+      font-family: "OpenSans";
+      font-size: 30px;
+      font-weight: bold;
+    }
+    ul {
+      padding-left: 10px;
+      li {
+        margin: 20px;
+
+        button {
+          font-size: 15px;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+$primary-color: #646cffaa;
+$secondary-color: #61dafbaa;
+
+.App-Page {
+  display: flex;
+
+  .slideBar {
+    // width: 10px;
+  }
+
+  .route-conf {
+    flex: 1;
+  }
+}
