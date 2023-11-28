@@ -1,0 +1,65 @@
+@import "../Style/App.scss";
+
+.userDetails-box {
+  font-family: "OpenSans";
+  background-color: $black-color;
+  height: 100%;
+  width: 100%;
+
+  .wrapper {
+    padding: 20px 40px;
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      background-color: $primary-color;
+      margin: 10px;
+      border-radius: 8px;
+      color: $white;
+      height: 150px;
+      width: 70%;
+      transition: all 0.4s ease-in-out;
+
+      &:hover {
+        width: 100%;
+        background-color: $primary-color;
+        margin: 10px;
+        border-radius: 8px;
+        color: $white;
+        height: 170px;
+        width: 100%;
+        .userName {
+          color: $secondary-color;
+          font-size: 25px;
+        }
+        .userEmail {
+          font-size: 15px;
+          font-weight: normal;
+        }
+      }
+      .userName {
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 10px;
+        transition: all 0.4s ease-in-out;
+      }
+      .userEmail {
+        font-size: 10px;
+        font-weight: normal;
+        transition: all 0.5s ease-in-out;
+      }
+      .userPhone {
+        font-size: 15px;
+        color: gray;
+      }
+      .button-delete {
+        &:hover {
+          background-color: $secondary-color;
+          color: $white;
+        }
+      }
+    }
+  }
+}

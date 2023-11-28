@@ -1,181 +1,67 @@
-import React, { useState, useEffect } from "react";
-import { Table, Button, Modal, Form } from "react-bootstrap";
-import {
-  getFirestore,
-  collection,
-  getDocs,
-  addDoc,
-  deleteDoc,
-  updateDoc,
-} from "firebase/firestore";
-import {
-  auth,
-  signOut,
-  onAuthStateChanged,
-  createUserWithEmailAndPassword,
-} from "../../firebase";
+import React from "react";
+import { Button, Card } from "react-bootstrap";
+import "../Style/Dashboard.scss";
+import "../Style/App.scss";
+import { useNavigate } from "react-router-dom";
 
-const Dashboard = () => {
-  const [users, setUsers] = useState([]);
-  const [user, setUser] = useState(null);
-  const [showAddUserModal, setShowAddUserModal] = useState(false);
-  const [newUserName, setNewUserName] = useState("");
-  const [newUserEmail, setNewUserEmail] = useState("");
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
-      if (!user) {
-        // Redirect to login if not logged in
-        window.location.href = "/login";
-      }
-    });
-
-    return () => unsubscribe();
-  }, []);
-
-  const fetchUsers = async () => {
-    const db = getFirestore();
-    const usersRef = collection(db, "user");
-    const snapshot = await getDocs(usersRef);
-
-    const fetchedUsers = snapshot.docs.map((doc) => {
-      const data = doc.data();
-      return {
-        id: doc.id,
-        name: data.name,
-        email: data.email,
-      };
-    });
-
-    setUsers(fetchedUsers);
-  };
-
-  const handleAddUser = async () => {
-    const db = getFirestore();
-    const usersRef = collection(db, "user");
-
-    const newUser = {
-      name: newUserName,
-      email: newUserEmail,
-    };
-
-    await addDoc(usersRef, newUser);
-    fetchUsers();
-    setShowAddUserModal(false);
-    setNewUserName("");
-    setNewUserEmail("");
-  };
-
-  const handleDeleteUser = async (userId) => {
-    const db = getFirestore();
-    const userRef = collection(db, "user", userId);
-
-    await deleteDoc(userRef);
-    fetchUsers();
-  };
-
-  const handleEditUser = async (userId, newName, newEmail) => {
-    const db = getFirestore();
-    const userRef = collection(db, "user", userId);
-
-    await updateDoc(userRef, { name: newName, email: newEmail });
-    fetchUsers();
-  };
-
-  const handleLogout = () => {
-    signOut(auth);
-  };
-
-  if (!user) {
-    return null; // Render nothing if the user is not authenticated
-  }
+function Dashboard() {
+  const navigate = useNavigate();
 
   return (
     <>
-      <h1>Admin Dashboard</h1>
-      <Table striped bordered>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user) => (
-            <tr key={user.id}>
-              <td>{user.name}</td>
-              <td>{user.email}</td>
-              <td>
-                <Button
-                  variant="danger"
-                  onClick={() => handleDeleteUser(user.id)}
-                >
-                  Delete
-                </Button>{" "}
-                <Button
-                  variant="info"
-                  onClick={() => {
-                    const newName = prompt("Enter new name:", user.name);
-                    const newEmail = prompt("Enter new email:", user.email);
-                    if (newName !== null && newEmail !== null) {
-                      handleEditUser(user.id, newName, newEmail);
-                    }
-                  }}
-                >
-                  Edit
-                </Button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-      <Button onClick={() => setShowAddUserModal(true)}>Add User</Button>
-      <Button onClick={handleLogout}>Logout</Button>
+      <section id="dashboard-page">
+        <div id="wrapper">
+          <section id="top">
+            <div className="wrapper">
+              <h2>Dashboard</h2>
+              <Card className="classBox">
+                <Card.Body className="pa-20">
+                  <Card.Title className="tittle-Main">Class</Card.Title>
+                  <Card.Subtitle className="mb-2 text-muted subtitle">
+                    Vide Uploaded
+                  </Card.Subtitle>
 
-      {/* Add User Modal */}
-      <Modal show={showAddUserModal} onHide={() => setShowAddUserModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Add User</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3" controlId="formBasicName">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter name"
-                value={newUserName}
-                onChange={(e) => setNewUserName(e.target.value)}
-              />
-            </Form.Group>
+                  <Card.Text className="cardText">
+                    Some quick example text to build on the card title and make
+                    up the bulk of the card's content.
+                  </Card.Text>
+                  <Button
+                    variant="danger"
+                    className="button-upload"
+                    onClick={() => navigate("/profile")}
+                  >
+                    Upload Video
+                  </Button>
+                  <Button variant="outline-secondary" className="TotalVideo">
+                    Total Video
+                  </Button>
+                </Card.Body>
+              </Card>
 
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Enter email"
-                value={newUserEmail}
-                onChange={(e) => setNewUserEmail(e.target.value)}
-              />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button
-            variant="secondary"
-            onClick={() => setShowAddUserModal(false)}
-          >
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleAddUser}>
-            Add User
-          </Button>
-        </Modal.Footer>
-      </Modal>
+              <Card className="card-users">
+                <Card.Body>
+                  <Card.Title>User Details</Card.Title>
+                  <Card.Text>
+                    Get all user Details exapt some personal info
+                  </Card.Text>
+                </Card.Body>
+                <Card.Footer className="footercard">
+                  <small className="text-muted">Last updated 3 mins ago</small>
+                  <Button
+                    variant="outline-success"
+                    className="userDetails-Button"
+                    onClick={() => navigate("/userdetails")}
+                  >
+                    User Details
+                  </Button>
+                </Card.Footer>
+              </Card>
+            </div>
+          </section>
+        </div>
+      </section>
     </>
   );
-};
+}
 
 export default Dashboard;
