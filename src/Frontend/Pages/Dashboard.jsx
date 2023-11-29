@@ -28,7 +28,7 @@ function Dashboard() {
                   <Button
                     variant="danger"
                     className="button-upload"
-                    onClick={() => navigate("/profile")}
+                    onClick={() => navigate("/uploadform")}
                   >
                     Upload Video
                   </Button>

@@ -1,0 +1,43 @@
+@import "../Style/App.scss";
+
+#upload-page {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: $primary-color;
+  color: $white;
+  font-family: "OpenSans";
+  .wrapper {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    .group {
+      transition: all 0.4s ease-in-out;
+      h4 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 10px;
+        margin-top: 20px;
+        transition: all 0.4s ease-in;
+      }
+      .Forminput {
+        background-color: $black-color;
+        color: $white;
+        font-weight: 500;
+        font-size: 12px;
+
+        &:hover {
+          border: 1px solid $tertiary-color;
+        }
+      }
+
+      &:hover {
+        h4 {
+          font-size: 25px;
+          color: $secondary-color;
+        }
+      }
+    }
+  }
+}

@@ -9,6 +9,7 @@ import SlideBar from "./Frontend/Pages/SlideBar";
 import "./Frontend/Style/App.scss";
 import UserDetails from "./Frontend/Pages/UserDetails";
 import PrivacyPolicy from "./Frontend/Pages/PrivacyPolicy";
+import UploadForm from "./Frontend/Pages/UploadForm";
 
 function App() {
   const isLoggedIn = false; // Assume user login status is stored in a variable
@@ -26,6 +27,7 @@ function App() {
           <Route path="/sign" element={<Sign />} />
           <Route path="/login" element={<Login />} />
           <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+          <Route path="/uploadform" element={<UploadForm />} />
         </Routes>
       </div>
     </div>
