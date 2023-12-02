@@ -11,14 +11,13 @@ function UploadForm() {
             <h4>Name</h4>
             <Form.Control
               type="text"
-              placeholder="Tittle"
+              placeholder="Title"
               className="Forminput Nameinput"
             />
           </div>
           <div className="group">
             <h4>Description</h4>
             <Form.Control
-              size="text"
               type="text"
               placeholder="Description"
               className="Forminput Descinput"
@@ -28,9 +27,7 @@ function UploadForm() {
           <div className="group">
             <h4>Notes</h4>
             <Form.Control
-              size="text"
-              type="textarea"
-              as
+              as="textarea"
               placeholder="Notes"
               className="Forminput Notesinput"
             />
@@ -38,13 +35,13 @@ function UploadForm() {
 
           <Form.Group controlId="formFile" className="mb-3 group">
             <Form.Label>
-              <h4> Select Image</h4>
+              <h4>Select Image</h4>
             </Form.Label>
             <Form.Control type="file" className="Forminput" />
           </Form.Group>
           <Form.Group controlId="formFile" className="mb-3 group">
             <Form.Label>
-              <h4> Select Video</h4>
+              <h4>Select Video</h4>
             </Form.Label>
             <Form.Control type="file" className="Forminput" />
           </Form.Group>
